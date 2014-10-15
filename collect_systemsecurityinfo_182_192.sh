@@ -95,8 +95,6 @@ chkconfig --list | grep -i ftp >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%
 echo "------------------------------------------------" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
 
 
-gjffpd
-
 
 mkdir /mnt/real_checklist1 2>> /dev/null
 mount.nfs 182.192.0.32:/tmp/checklist_collector /mnt/real_checklist1/
