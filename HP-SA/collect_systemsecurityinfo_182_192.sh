@@ -95,6 +95,36 @@ chkconfig --list | grep -i ftp >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%
 echo "------------------------------------------------" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
 
 
+echo "5.8 Are important documents on system managed?" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+echo "A. Are important documents not related to the operation stored on server?" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+echo "------------------------------------------------" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+echo "[$HOSTNAME]# find / -name "*.tar" -o -name "*.zip"-o -name "*.tgz" -o -name "*.gz"-o -name "*.bak"" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+find / -name "*.tar" -o -name "*.zip"-o -name "*.tgz" -o -name "*.gz"-o -name "*.bak" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt 2>> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+echo "------------------------------------------------" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+
+
+
+echo "5.9 Is system setting for malware infection defense applied?" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+echo "A. Unowned files exist?" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+echo "------------------------------------------------" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+echo "[$HOSTNAME]# find / -nouser -o -nogroup" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+find / -nouser -o -nogroup >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt 2>> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+echo "------------------------------------------------" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+
+echo "B. When using .exrc file, illegal command exist?" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+echo "------------------------------------------------" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+echo "[$HOSTNAME]# find / -name "*.exrc"" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+find / -name "*.exrc" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt 2>> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+echo "------------------------------------------------" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+
+
+echo "6.1 Is latest update patch applied?" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+echo "A. Is latest update patch applied?" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+echo "------------------------------------------------" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+echo "[$HOSTNAME]# rpm -qa" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+rpm -qa >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+echo "------------------------------------------------" >> /tmp/real_checklist/$HOSTNAME-$(date '+%Y_%m_%d').txt
+
 
 mkdir /mnt/real_checklist1 2>> /dev/null
 mount.nfs 182.192.0.32:/tmp/checklist_collector /mnt/real_checklist1/
